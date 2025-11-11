@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>When ADHD Boy Meets OCD Girl — (Improved)</title>
+    <meta name="description" content="A visual poem: 'When ADHD Boy Meets OCD Girl' — animated background with sparks and rain, accessible and responsive." />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0f172a;
+            --text: #e2e8f0;
+            --amber: 251,191,36;
+            --sky: 56,189,248;
+        }
+
+        html, body {
+            height: 100%;
+        }
+
+        body {
+            margin: 0;
+            overflow-x: hidden;
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+            font-size: 12pt; /* Poem text size */
+        }
+
+        #canvas-container {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        #bgCanvas {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        .poem-container {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .glass-panel {
+            background: rgba(15, 23, 42, 0.65);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.6);
+            animation: fadeIn 1.2s ease-out both;
+        }
+
+        h1 {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 20pt; /* Heading size relative to 12pt body */
+            margin-bottom: 2rem;
+            background: linear-gradient(90deg, #fbbf24, #38bdf8);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: 0.02em;
+            text-transform: capitalize;
+            text-shadow: 0 0 10px rgba(251,191,36,0.3), 0 0 15px rgba(56,189,248,0.2);
+            animation: fadeIn 1.5s ease-out both;
+        }
+
+        .stanza {
+            margin-bottom: 1.25rem;
+            font-size: 12pt;
+            line-height: 1.8;
+            opacity: 0;
+            transform: translateY(14px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+            .stanza.visible {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            .stanza p {
+                margin-bottom: 0.4rem;
+            }
+
+        .emphasis-he {
+            color: rgb(var(--amber));
+            font-weight: 600;
+        }
+
+        .emphasis-she {
+            color: rgb(var(--sky));
+            font-weight: 600;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(6px);
+            }
+
+            to {
+                opacity: 1;
+                transform: none;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .glass-panel {
+                padding: 1.5rem;
+            }
+
+            .poem-container {
+                padding: 3rem 1rem;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .stanza {
+                transition: none;
+            }
+
+            .glass-panel {
+                animation: none;
+            }
+        }
+
+        .glass-panel:focus-within {
+            outline: 3px solid rgba(100,150,255,0.08);
+        }
+    </style>
+</head>
+<body>
+
+    <div id="canvas-container" aria-hidden="true">
+        <canvas id="bgCanvas"></canvas>
+    </div>
+
+    <main class="poem-container" role="main">
+        <section class="glass-panel" tabindex="0" aria-labelledby="title">
+            <h1 id="title">When ADHD Boy Meets OCD Girl</h1>
+
+            <div class="stanza-wrapper">
+                <div class="stanza" aria-label="stanza 1">
+                    <p><span class="emphasis-he">He</span> lives in moments, <span class="emphasis-she">she</span> lives by minutes.</p>
+                    <p><span class="emphasis-he">He</span> thrives in improvisation, <span class="emphasis-she">she</span> finds peace in precision.</p>
+                    <p><span class="emphasis-he">He</span> forgets, <span class="emphasis-she">she</span> double-checks.</p>
+                    <p><span class="emphasis-he">He</span> runs late, <span class="emphasis-she">she</span> plans ahead.</p>
+                    <p><span class="emphasis-he">He</span> feels everything all at once;</p>
+                    <p><span class="emphasis-she">She</span> feels too much, but hides it neatly in symmetry.</p>
+                </div>
+
+                <div class="stanza" aria-label="stanza 2">
+                    <p>And yet—</p>
+                    <p>When they meet, it’s not chaos meeting order.</p>
+                    <p>It’s freedom meeting fear.</p>
+                    <p>It’s color meeting canvas.</p>
+                    <p>It’s the wild rhythm finding its metronome.</p>
+                </div>
+
+                <div class="stanza" aria-label="stanza 3">
+                    <p><span class="emphasis-he">He’s</span> thunder; <span class="emphasis-she">she’s</span> the steady rain,</p>
+                    <p><span class="emphasis-he">He</span> breaks the pattern, <span class="emphasis-she">she</span> mends the chain.</p>
+                    <p><span class="emphasis-he">He</span> speaks in sparks, <span class="emphasis-she">she</span> writes in grace —</p>
+                    <p>Two restless hearts, one quiet place.</p>
+                </div>
+
+                <div class="stanza" aria-label="stanza 4">
+                    <p>And when the world forgets their tune,</p>
+                    <p>They dance beneath a fragile moon.</p>
+                    <p>For love is not to fix or mend,</p>
+                    <p>But where differences find their blend.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        (function () {
+            const canvas = document.getElementById('bgCanvas');
+            const ctx = canvas.getContext('2d', { alpha: true });
+            let width = 0, height = 0;
+
+            function setSize() {
+                const dpr = window.devicePixelRatio || 1;
+                width = canvas.clientWidth = window.innerWidth;
+                height = canvas.clientHeight = window.innerHeight;
+                canvas.width = Math.round(width * dpr);
+                canvas.height = Math.round(height * dpr);
+                ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+            }
+            window.addEventListener('resize', setSize, { passive: true });
+            setSize();
+
+            const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+            const area = width * height;
+            const sparkCount = Math.max(16, Math.min(120, Math.round((area / (1920 * 1080)) * 60)));
+            const rainCount = Math.max(20, Math.min(180, Math.round((area / (1920 * 1080)) * 90)));
+
+            class Spark {
+                constructor() {
+                    this.reset(true);
+                    this.timer = Math.random() * Math.PI * 2;
+                }
+                reset(init = false) {
+                    this.x = Math.random() * width;
+                    this.y = Math.random() * height;
+                    this.vx = (Math.random() - 0.5) * (init ? 2.5 : 4);
+                    this.vy = (Math.random() - 0.5) * (init ? 2.5 : 4);
+                    this.size = Math.random() * 3 + 0.8;
+                    this.color = `rgba(${getComputedStyle(document.documentElement).getPropertyValue('--amber') || '251,191,36'},${Math.random() * 0.45 + 0.25})`;
+                }
+                update() {
+                    if (!prefersReduced && Math.random() < 0.06) {
+                        this.vx += (Math.random() - 0.5) * 1.6;
+                        this.vy += (Math.random() - 0.5) * 1.6;
+                    }
+                    const maxSpeed = 3.2;
+                    this.vx = Math.max(-maxSpeed, Math.min(maxSpeed, this.vx));
+                    this.vy = Math.max(-maxSpeed, Math.min(maxSpeed, this.vy));
+                    this.x += this.vx;
+                    this.y += this.vy;
+                    if (this.x < -10) this.x = width + 10;
+                    if (this.x > width + 10) this.x = -10;
+                    if (this.y < -10) this.y = height + 10;
+                    if (this.y > height + 10) this.y = -10;
+                    this.timer += 0.12;
+                    this.currentSize = Math.max(0.2, this.size + Math.sin(this.timer) * 0.9);
+                }
+                draw() {
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.currentSize, 0, Math.PI * 2);
+                    ctx.fillStyle = this.color;
+                    ctx.fill();
+                }
+            }
+
+            class Rain {
+                constructor() { this.reset(); }
+                reset() {
+                    this.x = Math.random() * width;
+                    this.y = Math.random() * height;
+                    this.vy = Math.random() * 1.6 + 0.8;
+                    this.length = Math.random() * 14 + 6;
+                    this.color = `rgba(${getComputedStyle(document.documentElement).getPropertyValue('--sky') || '56,189,248'},${Math.random() * 0.35 + 0.18})`;
+                }
+                update() {
+                    this.y += this.vy;
+                    if (this.y > height + 30) { this.y = -30; this.x = Math.random() * width; }
+                }
+                draw() {
+                    ctx.beginPath();
+                    ctx.moveTo(this.x, this.y);
+                    ctx.lineTo(this.x, this.y + this.length);
+                    ctx.strokeStyle = this.color;
+                    ctx.lineWidth = 1;
+                    ctx.stroke();
+                }
+            }
+
+            const sparks = Array.from({ length: sparkCount }, () => new Spark());
+            const rain = Array.from({ length: rainCount }, () => new Rain());
+
+            let lastFrame = performance.now();
+            function animate(now) {
+                const dt = Math.min(40, now - lastFrame);
+                lastFrame = now;
+
+                ctx.clearRect(0, 0, width, height);
+
+                rain.forEach(drop => { drop.update(dt); drop.draw(); });
+
+                sparks.forEach(spark => {
+                    spark.update(dt);
+                    spark.draw();
+
+                    for (let i = 0, len = Math.min(40, rain.length); i < len; i++) {
+                        const drop = rain[(i + Math.floor(Math.abs(spark.x + spark.y))) % rain.length];
+                        const dx = spark.x - drop.x;
+                        const dy = spark.y - (drop.y + drop.length / 2);
+                        const dist = Math.hypot(dx, dy);
+                        if (dist < 90) {
+                            ctx.beginPath();
+                            ctx.moveTo(spark.x, spark.y);
+                            ctx.lineTo(drop.x, drop.y + drop.length / 2);
+                            const g = ctx.createLinearGradient(spark.x, spark.y, drop.x, drop.y);
+                            g.addColorStop(0, `rgba(${getComputedStyle(document.documentElement).getPropertyValue('--amber') || '251,191,36'},0.28)`);
+                            g.addColorStop(1, `rgba(${getComputedStyle(document.documentElement).getPropertyValue('--sky') || '56,189,248'},0.28)`);
+                            ctx.strokeStyle = g;
+                            ctx.lineWidth = 0.45;
+                            ctx.stroke();
+                        }
+                    }
+                });
+
+                if (!prefersReduced) requestAnimationFrame(animate);
+            }
+
+            if (!prefersReduced) requestAnimationFrame(animate);
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+            }, { threshold: 0.12, rootMargin: '0px 0px -50px 0px' });
+
+            document.querySelectorAll('.stanza').forEach(s => observer.observe(s));
+
+        })();
+    </script>
+</body>
+</html>
